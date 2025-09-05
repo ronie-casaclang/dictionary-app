@@ -7,10 +7,12 @@
 
 # 2: Add Internet Permission
 
-<uses-permission android:name="android.permission.INTERNET"/>
+Go to AndroidManifest.xml file
+uses-permission android:name="android.permission.INTERNET"
 
 # 3. Add Networking Library
 
+Go to build.gradle.kts file
 dependencies {
     implementation("com.android.volley:volley:1.2.1")
 }
