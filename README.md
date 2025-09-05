@@ -1,16 +1,17 @@
 # 1: Free Dictionary API
 
-###DictionaryAPI.dev
+### DictionaryAPI.dev
 - Free & open source, no API key needed.
 - Supports meanings, synonyms, antonyms, phonetics.
 - URL Example: https://api.dictionaryapi.dev/api/v2/entries/en/<WORD>
 
 # 2: Add Internet Permission
+
 <uses-permission android:name="android.permission.INTERNET"/>
 
 # 3. Add Networking Library
+
 dependencies {
-    implementation 'com.android.volley:volley:1.2.1'
     implementation("com.android.volley:volley:1.2.1")
 }
 
