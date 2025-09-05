@@ -7,18 +7,18 @@
 
 # 2: Add Internet Permission
 
-Go to AndroidManifest.xml file
+Go to AndroidManifest.xml file <br>
 uses-permission android:name="android.permission.INTERNET"
 
 # 3. Add Networking Library
 
-Go to build.gradle.kts file
-dependencies {
-    implementation("com.android.volley:volley:1.2.1")
+Go to build.gradle.kts file <br>
+dependencies { <br>
+    implementation("com.android.volley:volley:1.2.1") <br>
 }
 
 # 4: Update MainActivity.java
 
-RequestQueue requestQueue;
-requestQueue = Volley.newRequestQueue(this);
+RequestQueue requestQueue; <br>
+requestQueue = Volley.newRequestQueue(this); <br>
 fetchWordData("keyword");
