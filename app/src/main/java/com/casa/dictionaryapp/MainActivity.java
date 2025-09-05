@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Components
     EditText txtWord;
-    Button btnMeaning, btnSynonym, btnAntonym;
+    Button btnMeaning, btnExample, btnSynonym, btnAntonym;
     RequestQueue requestQueue;
 
     @Override
@@ -42,12 +42,14 @@ public class MainActivity extends AppCompatActivity {
         // Initialize
         txtWord = findViewById(R.id.txtWord);
         btnMeaning = findViewById(R.id.btnMeaning);
+        btnExample = findViewById(R.id.btnExample);
         btnSynonym = findViewById(R.id.btnSynonym);
         btnAntonym = findViewById(R.id.btnAntonym);
         requestQueue = Volley.newRequestQueue(this);
 
         // Button Clicks
         btnMeaning.setOnClickListener(v -> fetchWordData("meaning"));
+        btnExample.setOnClickListener(v -> fetchWordData("example"));
         btnSynonym.setOnClickListener(v -> fetchWordData("synonym"));
         btnAntonym.setOnClickListener(v -> fetchWordData("antonym"));
     }
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                                 java.util.Set<String> synSet = new java.util.LinkedHashSet<>();
                                 java.util.Set<String> antSet = new java.util.LinkedHashSet<>();
                                 String firstDefinition = null;
+                                String firstExample = null;
 
                                 // Iterate ALL entries, meanings, and definitions
                                 for (int e = 0; e < response.length(); e++) {
@@ -110,6 +113,11 @@ public class MainActivity extends AppCompatActivity {
                                                 firstDefinition = def.optString("definition", null);
                                             }
 
+                                            // ✅ Capture first sample example
+                                            if (firstExample == null && def.has("example")) {
+                                                firstExample = def.optString("example");
+                                            }
+
                                             org.json.JSONArray dSyn = def.optJSONArray("synonyms");
                                             if (dSyn != null) {
                                                 for (int k = 0; k < dSyn.length(); k++) {
@@ -133,6 +141,14 @@ public class MainActivity extends AppCompatActivity {
                                             Toast.makeText(this, "Meaning: " + firstDefinition, Toast.LENGTH_LONG).show();
                                         } else {
                                             Toast.makeText(this, "No meaning found.", Toast.LENGTH_SHORT).show();
+                                        }
+                                        break;
+
+                                    case "example":  // ✅ NEW
+                                        if (firstExample != null) {
+                                            Toast.makeText(this, "Example: " + firstExample, Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(this, "No example sentence found!", Toast.LENGTH_SHORT).show();
                                         }
                                         break;
 

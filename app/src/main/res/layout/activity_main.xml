@@ -30,6 +30,13 @@
             android:text="Meaning"/>
 
         <Button
+            android:id="@+id/btnExample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Example Sentence"
+            android:layout_marginTop="10dp"/>
+
+        <Button
             android:id="@+id/btnSynonym"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
